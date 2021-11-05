@@ -14,9 +14,6 @@
         <td>brasil_fields</td>
         <td>validadores</td>  
     </tr>
-</table>
-
-<table>
     <tr>
         <td>^1.7.0</td>
         <td>^2.5.3</td>
