@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:olx_clone/models/Anuncio.dart';
+import 'package:olx_clone/util/Configuracoes.dart';
 import 'package:olx_clone/views/widgets/BotaoCustomizado.dart';
 import 'package:olx_clone/views/widgets/InputCustomizado.dart';
 import 'package:validadores/Validador.dart';
@@ -366,9 +367,15 @@ class _NovoAnuncioState extends State<NovoAnuncio> {
         .doc(_anuncio!.id)
         .set(_anuncio!.toMap());
 
-    Navigator.pop(_dialogContext!);
-
-    Navigator.pop(context);
+    // Salvar anúncio público
+    db
+        .collection("anuncios")
+        .doc(_anuncio!.id)
+        .set(_anuncio!.toMap())
+        .then((_) {
+      Navigator.pop(_dialogContext!);
+      Navigator.pop(context);
+    });
   }
 
   Future _uploadImagens() async {
@@ -391,43 +398,11 @@ class _NovoAnuncioState extends State<NovoAnuncio> {
   }
 
   _carregarItensDropDown() {
-// Carregar itens Categoria
-    _listaItensDropCategorias = _listaItensDropCategorias.toList();
-    _listaItensDropCategorias.add(const DropdownMenuItem(
-      child: Text("Automóvel"),
-      value: "auto",
-    ));
-
-    _listaItensDropCategorias.add(const DropdownMenuItem(
-      child: Text("Imóvel"),
-      value: "imovel",
-    ));
-
-    _listaItensDropCategorias.add(const DropdownMenuItem(
-      child: Text("Eletrônicos"),
-      value: "eletro",
-    ));
-
-    _listaItensDropCategorias.add(const DropdownMenuItem(
-      child: Text("Moda"),
-      value: "moda",
-    ));
-
-    _listaItensDropCategorias.add(const DropdownMenuItem(
-      child: Text("Esportes"),
-      value: "esportes",
-    ));
+    // Carregar itens Categoria
+    _listaItensDropCategorias = Configuracoes.getCategorias();
 
     // Carregar itens Estados
-    _listaItensDropEstados = _listaItensDropEstados.toList();
-    for (var estado in Estados.listaEstadosSigla) {
-      _listaItensDropEstados.add(
-        DropdownMenuItem(
-          child: Text(estado),
-          value: estado,
-        ),
-      );
-    }
+    _listaItensDropEstados = Configuracoes.getEstados();
   }
 
   _selecionarImagemGaleria() async {
