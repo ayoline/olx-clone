@@ -13,6 +13,7 @@
         <td>image_picker</td>
         <td>brasil_fields</td>
         <td>validadores</td>  
+        <td>carousel_slider</td>  
     </tr>
     <tr>
         <td>^1.7.0</td>
@@ -22,6 +23,7 @@
         <td>^0.8.4+2</td>
         <td>^1.2.0</td>
         <td>^1.0.5</td>
+        <td>^4.0.0</td>
     </tr>
 </table>
 

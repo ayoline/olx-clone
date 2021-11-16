@@ -2,14 +2,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:olx_clone/views/Anuncios.dart';
+import 'package:olx_clone/views/DetalhesAnuncio.dart';
 import 'package:olx_clone/views/Login.dart';
 import 'package:olx_clone/views/MeusAnuncios.dart';
 import 'package:olx_clone/views/NovoAnuncio.dart';
 
 class RouteGenerator {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments as String?;
-
+  static Route<dynamic> generateRoute(settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case "/":
         return MaterialPageRoute(
@@ -26,6 +26,10 @@ class RouteGenerator {
       case "/novo-anuncio":
         return MaterialPageRoute(
           builder: (_) => const NovoAnuncio(),
+        );
+      case "/detalhes-anuncio":
+        return MaterialPageRoute(
+          builder: (_) => DetalhesAnuncio(args),
         );
       default:
         _erroRota();
