@@ -39,7 +39,9 @@ class _DetalhesAnuncioState extends State<DetalhesAnuncio> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: const Color(0xff7b1fa2),
+      ),
       body: Stack(
         children: [
           //conteudos
@@ -150,8 +152,6 @@ class _DetalhesAnuncioState extends State<DetalhesAnuncio> {
   _ligarTelefone(String telefone) async {
     if (await canLaunch("tel:$telefone")) {
       await launch("tel:$telefone");
-    } else {
-      print("Não pode fazer a ligação");
     }
   }
 }

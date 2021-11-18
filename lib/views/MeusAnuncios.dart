@@ -38,16 +38,21 @@ class _MeusAnunciosState extends State<MeusAnuncios> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xff7b1fa2),
         title: const Text(
           "Meus Anúncios",
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: const Color(0xff7b1fa2),
+        icon: const Icon(Icons.add),
+        label: const Text("Adicionar"),
         onPressed: () {
           Navigator.pushNamed(context, "/novo-anuncio");
         },
         foregroundColor: Colors.white,
-        child: const Icon(Icons.add),
+        //child: const Icon(Icons.add),
       ),
       body: StreamBuilder(
         stream: _controller.stream,
@@ -56,7 +61,6 @@ class _MeusAnunciosState extends State<MeusAnuncios> {
             case ConnectionState.none:
             case ConnectionState.waiting:
               return carregandoDados;
-              break;
             case ConnectionState.active:
             case ConnectionState.done:
               // Exibe mensagem de erro
@@ -117,8 +121,6 @@ class _MeusAnunciosState extends State<MeusAnuncios> {
                     );
                   });
           }
-
-          return Container();
         },
       ),
     );
@@ -155,7 +157,7 @@ class _MeusAnunciosState extends State<MeusAnuncios> {
   _recuperarDadosUsuarioLogado() async {
     // salvar anuncio no Firestore
     FirebaseAuth auth = FirebaseAuth.instance;
-    User? usuarioLogado = await auth.currentUser!;
+    User? usuarioLogado = auth.currentUser!;
     _idUsuarioLogado = usuarioLogado.uid;
   }
 }

@@ -36,7 +36,7 @@ class _AnunciosState extends State<Anuncios> {
   Widget build(BuildContext context) {
     var carregandoDados = Center(
       child: Column(
-        children: [
+        children: const [
           Text("Carragando anuncios"),
           CircularProgressIndicator(),
         ],
@@ -45,6 +45,7 @@ class _AnunciosState extends State<Anuncios> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xff7b1fa2),
         title: const Text("OLX"),
         elevation: 0,
         actions: [
@@ -120,7 +121,6 @@ class _AnunciosState extends State<Anuncios> {
                   case ConnectionState.none:
                   case ConnectionState.waiting:
                     return carregandoDados;
-                    break;
                   case ConnectionState.active:
                   case ConnectionState.done:
                     QuerySnapshot? querySnapshot =
@@ -163,7 +163,6 @@ class _AnunciosState extends State<Anuncios> {
                           }),
                     );
                 }
-                return Container();
               },
             ),
           ],

@@ -46,6 +46,7 @@ class _NovoAnuncioState extends State<NovoAnuncio> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xff7b1fa2),
         title: const Text(
           "Novo Anúncio",
         ),
@@ -356,7 +357,7 @@ class _NovoAnuncioState extends State<NovoAnuncio> {
 
     // salvar anuncio no Firestore
     FirebaseAuth auth = FirebaseAuth.instance;
-    User? usuarioLogado = await auth.currentUser!;
+    User? usuarioLogado = auth.currentUser!;
     String idUsuarioLogado = usuarioLogado.uid;
 
     FirebaseFirestore db = FirebaseFirestore.instance;

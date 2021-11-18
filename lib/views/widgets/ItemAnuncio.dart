@@ -11,10 +11,11 @@ class ItemAnuncio extends StatelessWidget {
   VoidCallback? onPressedRemover;
 
   ItemAnuncio({
+    Key? key,
     required this.anuncio,
     this.onTapItem,
     this.onPressedRemover,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

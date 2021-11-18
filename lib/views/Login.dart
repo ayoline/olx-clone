@@ -13,10 +13,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController _controllerEmail =
-      TextEditingController(text: "ayo@gmail.com");
-  TextEditingController _controllerSenha =
-      TextEditingController(text: "123456");
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerSenha = TextEditingController();
 
   bool _cadastrar = false;
   String _mensagemErro = "";
@@ -78,6 +76,12 @@ class _LoginState extends State<Login> {
                     onPressed: () {
                       _validarCampos();
                     }),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, "/");
+                  },
+                  child: const Text("Ir para anúncios"),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Text(
